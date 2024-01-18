@@ -7,10 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,9 +18,13 @@ import java.util.List;
 @RestController
 public class DeptController {
     //public static Logger log = LoggerFactory.getLogger(DeptController.class);
-    @Autowired
+    @Autowired  //注入
     private DeptService deptService;
 
+    /**
+     * 查询部门数据
+     * @return
+     */
     //@RequestMapping(value = "/depts",method = RequestMethod.GET ) //声明请求路径为/depts，声明请求方式为get
     @GetMapping("/depts")
     public Result list(){
@@ -33,4 +34,16 @@ public class DeptController {
 
         return Result.success(deptList);
     }
+
+    /**
+     * 删除部门
+     */
+    @DeleteMapping("/depts/{id}")
+    public Result delete(@PathVariable Integer id){
+        log.info("根据id删除部门:{}",id);  //这里的{}是参数占位符
+        //调用service删除部门,该方法无返回值
+        deptService.delete(id);
+        return Result.success(); //无参方法
+    }
+
 }
