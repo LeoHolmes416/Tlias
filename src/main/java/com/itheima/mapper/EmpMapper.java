@@ -4,6 +4,7 @@ import com.itheima.pojo.Emp;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -34,7 +35,12 @@ public interface EmpMapper {
      * 分页插件实现员工信息查询
      * @return
      */
-    @Select("select * from emp")
-    public List<Emp> list();
+    //@Select("select * from emp")
+    public List<Emp> list(String name, Short gender, LocalDate begin, LocalDate end);
 
+    /**
+     * 根据id批量删除员工数据
+     * @param ids
+     */
+    void delete(List<Integer> ids);
 }
