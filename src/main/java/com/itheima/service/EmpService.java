@@ -1,5 +1,6 @@
 package com.itheima.service;
 
+import com.itheima.pojo.Emp;
 import com.itheima.pojo.PageBean;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,4 +24,10 @@ public interface EmpService {
      * @param ids
      */
     void delete(List<Integer> ids);
+
+    /**
+     * 新增员工
+     * @param emp
+     */
+    void save(Emp emp);
 }
