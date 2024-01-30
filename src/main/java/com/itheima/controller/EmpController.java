@@ -60,4 +60,25 @@ public class EmpController {
         empService.save(emp);
         return Result.success();
     }
+
+    /**
+     * 根据ID查询员工信息，用于修改时回显
+     */
+    @GetMapping("/{id}")
+    public Result getById(@PathVariable Integer id){
+        log.info("根据id查询员工信息: {}",id);
+        Emp emp = empService.getById(id);
+        return Result.success(emp);
+    }
+
+    /**
+     * 修改员工信息
+     * @return
+     */
+    @PutMapping
+    public Result update(@RequestBody Emp emp){
+        log.info("更新员工信息: {}",emp);
+        empService.update(emp);
+        return Result.success();
+    }
 }

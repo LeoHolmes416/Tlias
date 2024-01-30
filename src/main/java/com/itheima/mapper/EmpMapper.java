@@ -34,6 +34,7 @@ public interface EmpMapper {
 
     /**
      * 分页插件实现员工信息查询
+     *
      * @return
      */
     //@Select("select * from emp")
@@ -41,6 +42,7 @@ public interface EmpMapper {
 
     /**
      * 根据id批量删除员工数据
+     *
      * @param ids
      */
     void delete(List<Integer> ids);
@@ -51,4 +53,16 @@ public interface EmpMapper {
     @Insert("insert into emp(username, name, gender, image, job, entrydate, dept_id, create_time, update_time) " +
             "values (#{username},#{name},#{gender},#{image},#{job},#{entrydate},#{deptId},#{createTime},#{updateTime})")
     void insert(Emp emp);
+
+    /**
+     * 员工回显
+     */
+    @Select("Select * from emp where id = #{id}")
+    Emp getById(Integer id);
+
+    /**
+     * 更新员工信息
+     * @param emp
+     */
+    void update(Emp emp);
 }
