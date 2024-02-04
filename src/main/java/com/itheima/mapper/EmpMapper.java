@@ -65,4 +65,7 @@ public interface EmpMapper {
      * @param emp
      */
     void update(Emp emp);
+
+    @Select("select * from emp where username = #{username} and password = #{password}")
+    Emp getByUserNameAndPwd(Emp emp);
 }

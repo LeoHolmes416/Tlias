@@ -1,0 +1,29 @@
+#配置服务器相关信息
+server:
+  port: 8080
+  address: 127.0.0.1
+#spring框架配置信息
+spring:
+  #数据库连接信息
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/tlias
+    username: root
+    password: root
+  servlet:
+    multipart:
+      #配置单个文件上传大小限制
+      max-file-size: 10MB
+      #配置单个请求最大大小的限制（一次请求可以上传多个文件）
+      max-request-size: 100MB
+
+#MyBatis配置
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+#阿里云OSS配置信息
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucketName: leo416-web-tlias
