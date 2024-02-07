@@ -1,6 +1,7 @@
 package com.itheima.mapper;
 
 import com.itheima.pojo.Emp;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -66,6 +67,17 @@ public interface EmpMapper {
      */
     void update(Emp emp);
 
+    /**
+     * 登陆时用户名和密码判断
+     * @param emp
+     * @return
+     */
     @Select("select * from emp where username = #{username} and password = #{password}")
     Emp getByUserNameAndPwd(Emp emp);
+
+    /**
+     * 根据部门删除对应员工
+     */
+    @Delete("delete from emp where dept_id = #{deptId}")
+    void deleteByDeptId(Integer deptId);
 }

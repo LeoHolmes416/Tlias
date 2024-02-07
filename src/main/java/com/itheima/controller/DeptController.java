@@ -40,7 +40,7 @@ public class DeptController {
      * 删除部门
      */
     @DeleteMapping("/{id}")
-    public Result delete(@PathVariable Integer id){
+    public Result delete(@PathVariable Integer id) throws Exception{
         log.info("根据id删除部门:{}",id);  //这里的{}是参数占位符
         //调用service删除部门,该方法无返回值
         deptService.delete(id);
