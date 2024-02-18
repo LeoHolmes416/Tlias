@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.itheima.anno.Log;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.Result;
 import com.itheima.service.DeptService;
@@ -39,6 +40,7 @@ public class DeptController {
     /**
      * 删除部门
      */
+    @Log
     @DeleteMapping("/{id}")
     public Result delete(@PathVariable Integer id) throws Exception{
         log.info("根据id删除部门:{}",id);  //这里的{}是参数占位符
@@ -49,6 +51,7 @@ public class DeptController {
     /**
      * 新增部门
      */
+    @Log
     @PostMapping
     public Result add(@RequestBody Dept dept){
         //json格式的参数封装到实体类中,注解用@RequestBody

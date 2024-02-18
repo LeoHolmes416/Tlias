@@ -6,6 +6,7 @@ import com.itheima.mapper.EmpMapper;
 import com.itheima.pojo.Dept;
 import com.itheima.pojo.DeptLog;
 import com.itheima.pojo.Emp;
+import com.itheima.service.DeptLogService;
 import com.itheima.service.DeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class DeptServiceImpl implements DeptService {
     @Autowired
     private EmpMapper empMapper;
     @Autowired
-    private DeptLogMapper deptLogMapper;
+    private DeptLogService deptLogService;
 
     @Override
     public List<Dept> list() {
@@ -41,13 +42,13 @@ public class DeptServiceImpl implements DeptService {
     public void delete(Integer id) throws Exception{
         try {
             deptMapper.deleteById(id);  //根据部门id删除部门
-            int i=1/0; //模拟抛出异常
+            // int i=1/0; //模拟抛出异常
             empMapper.deleteByDeptId(id);  //根据部门id删除部门下的员工
         } finally {
             DeptLog deptLog = new DeptLog();  //记录日志
             deptLog.setCreateTime(LocalDateTime.now());
             deptLog.setDescription("执行解散部门的操作，此次解散的部门是"+id+"部门");
-            deptLogMapper.insert(deptLog);
+            deptLogService.insert(deptLog);  //注意是deptLogService不是deptLogMapper
         }
 
     }
