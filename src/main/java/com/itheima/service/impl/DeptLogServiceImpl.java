@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 实现类新建事务
+ */
 @Service
 public class DeptLogServiceImpl implements DeptLogService {
 
